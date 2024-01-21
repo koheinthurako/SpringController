@@ -50,6 +50,9 @@ public class StudentController {
 	}
 	
 	@GetMapping("/all")
+//	အောက်က ResponseEntity ဆိုတာ အပေါ်ကလို String တစ်မျိုးထဲမဟုတ်ပဲ
+//	Class(Entity) or Object တစ်ခုကို Response ပြန်ပြီးတော့ Client ဘက်မှာထုတ်ပြမယ်ဆိုတဲ့ပုံစံမျိုး
+//	ဒါဆိုရင်တော့ return type မှာ ResponseEntity ကို Object တစ်ခုဆောက်ပေးရတယ်
 	public ResponseEntity<List<Student>> getAllStudents() {
 		List<Student> stds = stdService.getAll();
 		return new ResponseEntity<List<Student>>(stds, HttpStatus.OK);
