@@ -1,6 +1,7 @@
 package com.demoController.ControllerDemo.service_impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.context.annotation.Configuration;
@@ -40,8 +41,18 @@ public class Student_Service_Impl implements Student_Service{
 
 	@Override
 	public String delete(int id) {
-		
-		return null;
+		Iterator<Student> stdList = stds.iterator();
+		while(stdList.hasNext()) {
+			Student pointer = stdList.next();
+			if(pointer.getId()==id) {
+				stdList.remove();
+				while(stdList.hasNext()) {
+					Student newPointer = stdList.next();
+					newPointer.setId(newPointer.getId()-1);
+				}
+			}
+		}
+		return "Deleted!";
 	}
 
 	@Override
